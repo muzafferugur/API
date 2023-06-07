@@ -36,7 +36,14 @@ public class Get03 extends JsonplaceholderBaseUrl {
         Response response=given().spec(spec).when().get("/{first}/{second}");
         response.prettyPrint();
 
-
+        /*
+        {
+    "userId": 2,
+    "id": 23,
+    "title": "et itaque necessitatibus maxime molestiae qui quas velit",
+    "completed": false
+}
+         */
 
 
 

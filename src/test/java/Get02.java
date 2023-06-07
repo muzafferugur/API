@@ -35,18 +35,18 @@ public class Get02 {
         response.then()
                 .assertThat()
                 .statusCode(404)
-                .statusLine("HTTP/1.1 404 Not Found");
+                .statusLine("HTTP/1.1 404 Not Found");// Status Line should be HTTP/1.1 404 Not Found
 
         assertTrue(response
-                .asString()//bize string olarak vermesini istediğimiz için asString()
-                .contains("Not Found"));
+                .asString()//bize string olarak vermesini istediğimiz için asString(),toString() kullanmıyoruz
+                .contains("Not Found"));//Response body contains "Not Found"
 
 
         assertFalse(response
                 .asString()
-                .contains("TechProEd"));
+                .contains("TechProEd"));//Response body does not contain "TechProEd"
 
-        assertEquals("Cowboy", response.getHeader("Server"));
+        assertEquals("Cowboy", response.getHeader("Server"));// Server is "Cowboy"
 
     }
 }
