@@ -13,7 +13,7 @@ public class Get06b extends ReqresBaseUrl{
        When
             I send GET Request to the URL
        Then
-​
+
             1)Status code is 200
             2)Print all pantone_values
             3)Print all ids greater than 3 on the console
