@@ -44,7 +44,7 @@ public class Get02 {
                 .asString()
                 .contains("TechProEd"));
 
-        assertEquals("Cowboy",response.getHeader("Server"));
+        assertEquals("Cowboy", response.getHeader("Server"));
 
     }
 }
