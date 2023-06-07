@@ -25,10 +25,12 @@ public class Get02 {
     public void get01() {
         //i)  Set the URL,
         String url = "https://restful-booker.herokuapp.com/booking/1";
+
         //ii)Set the expected Data (beklenen datanin olusturulmasi, post, put, patch)
         //iii)Type code to send request(Talep gondermek icin kod yazimi)
         Response response = given().when().get(url);
         response.prettyPrint();
+
         //iv)Do Assertion () dogrulama yapmak
         response.then()
                 .assertThat()
@@ -36,7 +38,7 @@ public class Get02 {
                 .statusLine("HTTP/1.1 404 Not Found");
 
         assertTrue(response
-                .asString()
+                .asString()//bize string olarak vermesini istediğimiz için asString()
                 .contains("Not Found"));
 
 
