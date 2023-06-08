@@ -3,8 +3,9 @@ import io.restassured.response.Response;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
-public class Get04 extends JsonplaceholderBaseUrl{
+public class Get04 extends JsonplaceholderBaseUrl {
     /*
         Given
             https://jsonplaceholder.typicode.com/todos
@@ -17,9 +18,9 @@ public class Get04 extends JsonplaceholderBaseUrl{
       And
           Response format should be "application/json"
       And
-          There should be 200 todos
+          There should be 200 todos=>200 tane todos bul diyor=>id unique olduğundan id den yürüyebiliriz
       And
-          "quis euis est sint explicaba" should be one of the todos title,
+          "quis eius est sint explicabo" should be one of the todos title,=>en az bir tane title  "quis eius est sint explicabo" içermelidir
       And
           "completed" is false
       And
@@ -30,13 +31,21 @@ public class Get04 extends JsonplaceholderBaseUrl{
     public void test01() {
 
         //Set the Url
-        spec.pathParam("first","todos");
+        spec.pathParam("first", "todos");
 
         //Set the expected data
 
         //Send the request and get the response
-        Response response =given().spec(spec).when().accept(ContentType.JSON).when()
+        Response response = given().spec(spec).when().accept(ContentType.JSON).when()
                 .get("/{first}");
         response.prettyPrint();
+
+        //Do Assertion
+        response.then().assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body("id", hasSize(200), "title", hasItem("quis eius est sint explicabo"),
+                        "userId", hasItems(2, 7, 9));
+
     }
 }
