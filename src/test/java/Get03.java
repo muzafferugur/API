@@ -1,7 +1,9 @@
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.*;//RestAssured ın tüm fonksiyonlarını kullanabilmek için * koyduk
+import static org.hamcrest.Matchers.*;//=>Matchers ın tüm fonksiyonlarını kullanabilmek için * koyduk
 
 public class Get03 extends JsonplaceholderBaseUrl {
 
@@ -28,7 +30,9 @@ public class Get03 extends JsonplaceholderBaseUrl {
         // Set The URL
 
         spec.pathParams("first","todos","second",23);
-        //=> "todos"->ilk parametre,  23->ikinci parametre =>bunları çağırmak için pathParams() kuullanırız
+        //spec.=>bizim baseUrl'imiz
+
+        //=> "todos"->ilk parametre,  23->ikinci parametre =>bunları eklemek için pathParams() kuullanırız.tek parametre için pathParam()
 
         // Expected Data(bizden istenirse Put,Patch,Post kullanarak yaparız)
 
@@ -36,6 +40,23 @@ public class Get03 extends JsonplaceholderBaseUrl {
 
         Response response=given().spec(spec).when().get("/{first}/{second}");
         response.prettyPrint();
+
+        //Do Assertion
+
+        //1.Yol (Hard Assert)=>farklı bodyler kullanıyorsak=>ilk hatada kod çalışmayı durdurur ve diğerlerini çalıştırmaz
+        response.then().assertThat().
+                statusCode(200).
+                contentType("application/json").
+                body("title",equalTo("et itaque necessitatibus maxime molestiae qui quas velit")).
+                body("completed",equalTo(false)).
+                body("userId",equalTo(2));
+
+        //2.Yol (Soft Assert)=>aynı body içerisinde testimizi yapıyoruz.=>tüm testler yapılır
+        response.then().assertThat().
+                statusCode(200).
+                contentType(ContentType.JSON).
+                body("title",equalTo("et itaque necessitatibus maxime molestiae qui quas velit"),
+                        "completed",equalTo(false),"userId",equalTo(2));
 
         /*
         {

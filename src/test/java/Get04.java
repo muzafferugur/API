@@ -1,0 +1,42 @@
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.junit.Test;
+
+import static io.restassured.RestAssured.*;
+
+public class Get04 extends JsonplaceholderBaseUrl{
+    /*
+        Given
+            https://jsonplaceholder.typicode.com/todos
+      When
+            I send a GET Request to the URL
+      And
+          Accept type is "application/json"
+      Then
+            HTTP Status Code should be 200
+      And
+          Response format should be "application/json"
+      And
+          There should be 200 todos
+      And
+          "quis euis est sint explicaba" should be one of the todos title,
+      And
+          "completed" is false
+      And
+         2, 7 ande 9 should be among the userId's
+     */
+
+    @Test
+    public void test01() {
+
+        //Set the Url
+        spec.pathParam("first","todos");
+
+        //Set the expected data
+
+        //Send the request and get the response
+        Response response =given().spec(spec).when().accept(ContentType.JSON).when()
+                .get("/{first}");
+        response.prettyPrint();
+    }
+}

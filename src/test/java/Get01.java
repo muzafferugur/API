@@ -30,8 +30,9 @@ public class Get01 {
     /*
 Given
         https://restful-booker.herokuapp.com/booking/101
-        ==>https://restful-booker.herokuapp.com-baseUrl
-        ==>/booking/101==>endPoint
+        ==>https://restful-booker.herokuapp.com==>baseUrl
+        ==>/booking/101==>parametreler
+        ==>https://restful-booker.herokuapp.com/booking/101==>tamamı endPoint
     When
         User sends a GET Request to the url
         //Buraya kadar REQUEST kısmı
