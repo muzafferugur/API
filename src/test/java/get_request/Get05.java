@@ -1,7 +1,10 @@
 package get_request;
 
 import base_url.RestfulBaseUrl;
+import io.restassured.response.Response;
 import org.junit.Test;
+
+import static io.restassured.RestAssured.*;
 
 public class Get05 extends RestfulBaseUrl {
 
@@ -13,17 +16,21 @@ public class Get05 extends RestfulBaseUrl {
     Then
         Status code is 200
     And
-        Among the data there should be someone whose firstname is "Johhny" and lastname is "Dear"
+        Among the data there should be someone whose firstname is "Jim" and lastname is "Jackson"
       */
 
     @Test
     public void test01() {
+        //https://restful-booker.herokuapp.com/booking/?firstname=Jim&lastname=Jackson=>bunu postman de manuel olarak yaptık bu url i oluşturmaya çalışıyoruz buradan
+        //?firstname=Jim&lastname=Jackson=>soru işaretinden sonraki kısımda sorgulama başlıyor->query
         //Set the Url
-        spec.pathParam("first","booking");
+        spec.pathParam("first","booking").queryParams("firstname","Jim", "lastname","Jackson");
+        //=>queryParams("   ")->sorgu parametreleri eklememiz için kullanırız
 
         //Set the Expected data
         //Send the request and get the response
-
+        Response response=given().spec(spec).when().get("/{first}");
+        response.prettyPrint();
 
     }
 }
