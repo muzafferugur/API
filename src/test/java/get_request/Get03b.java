@@ -1,12 +1,14 @@
+package get_request;
+
+import base_url.ReqresBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.equalTo;
 
-public class Get03b extends ReqresBaseUrl{
+public class Get03b extends ReqresBaseUrl {
 
      /*
        Given
