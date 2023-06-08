@@ -19,6 +19,11 @@ public class Get05 extends RestfulBaseUrl {
     @Test
     public void test01() {
         //Set the Url
+        spec.pathParam("first","booking");
+
+        //Set the Expected data
+        //Send the request and get the response
+
 
     }
 }

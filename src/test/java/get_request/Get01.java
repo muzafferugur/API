@@ -29,12 +29,16 @@ public class Get01 {
 
  */
 
+    /**
+     * ==>https://restful-booker.herokuapp.com==>baseUrl
+     * ==>/booking==>endPoint
+     * ==> /101==>parametre
+     * ==>https://restful-booker.herokuapp.com/booking/101==>tamamına URL veya URI denir endPoint değil
+     */
+
     /*
 Given
         https://restful-booker.herokuapp.com/booking/101
-        ==>https://restful-booker.herokuapp.com==>baseUrl
-        ==>/booking/101==>parametreler
-        ==>https://restful-booker.herokuapp.com/booking/101==>tamamı endPoint
     When
         User sends a GET Request to the url
         //Buraya kadar REQUEST kısmı
@@ -48,7 +52,6 @@ Given
         Status Line should be HTTP/1.1 200 OK
 
  */
-
     @Test
     public void get01() {
         //i)  Set the URL
