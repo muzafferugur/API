@@ -28,8 +28,9 @@ public class Get03 extends JsonplaceholderBaseUrl {
         // Set The URL
 
         spec.pathParams("first","todos","second",23);
+        //=> "todos"->ilk parametre,  23->ikinci parametre =>bunları çağırmak için pathParams() kuullanırız
 
-        // Expected Data
+        // Expected Data(bizden istenirse Put,Patch,Post kullanarak yaparız)
 
         // Send the request and Get Response
 

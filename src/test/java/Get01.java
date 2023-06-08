@@ -30,14 +30,20 @@ public class Get01 {
     /*
 Given
         https://restful-booker.herokuapp.com/booking/101
+        ==>https://restful-booker.herokuapp.com-baseUrl
+        ==>/booking/101==>endPoint
     When
         User sends a GET Request to the url
+        //Buraya kadar REQUEST kısmı
+***********************************************************************
+        //THEN ve sonrası RESPONSE-->Do Assertion ()dogrulama yapmak
     Then
         HTTP Status Code should be 200
     And
         Content Type should be JSON
     And
         Status Line should be HTTP/1.1 200 OK
+
  */
 
     @Test
