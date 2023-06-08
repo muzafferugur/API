@@ -5,8 +5,8 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.given;
-import static org.testng.AssertJUnit.assertEquals;
+import static io.restassured.RestAssured.*;
+import static org.junit.Assert.*;
 
 public class Get06b extends ReqresBaseUrl {
 

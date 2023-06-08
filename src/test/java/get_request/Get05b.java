@@ -6,7 +6,8 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import org.testng.asserts.SoftAssert;
 
-import static io.restassured.RestAssured.given;
+
+import static io.restassured.RestAssured.*;
 
 public class Get05b extends ReqresBaseUrl {
 
