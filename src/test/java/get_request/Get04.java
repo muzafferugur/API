@@ -30,6 +30,16 @@ public class Get04 extends JsonplaceholderBaseUrl {
          2, 7 ande 9 should be among the userId's
      */
 
+    /**
+     * * Matchers Class kullanarak doğrulama
+     *   http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html
+     *
+     *   Matchers.equalto(): Key-Value şeklinde girilen datanın, eşit olduğunu doğrulamak için kullanılır.
+     *   Matchers.hasSize(): Datanın size'ını doğrulamak için kullanılır.
+     *   Matchers.hasItem(): Girilen tek bir data'yı doğrulamak için kullanılır.
+     *   Matchers.hasItems(): Girilen birden fazla datayı doğrulamak için kullanılır.
+     */
+
     @Test
     public void test01() {
 

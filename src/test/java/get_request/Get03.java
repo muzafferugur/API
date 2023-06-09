@@ -8,6 +8,11 @@ import org.junit.Test;
 import static io.restassured.RestAssured.*;//RestAssured ın tüm fonksiyonlarını kullanabilmek için * koyduk
 import static org.hamcrest.Matchers.*;//=>Matchers ın tüm fonksiyonlarını kullanabilmek için * koyduk
 
+/**
+ * * Rest Assured: REST API'lerini test etmek ve doğrulamak için kullanılan
+ *                 Open Source (Açık Kaynak) bir Java kütüphanesidir.
+ *  Matchers.equalto(): Key-Value şeklinde girilen datanın, eşit olduğunu doğrulamak için kullanılır.
+ */
 public class Get03 extends JsonplaceholderBaseUrl {
 
     /*
