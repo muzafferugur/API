@@ -41,7 +41,7 @@ public class Get04 extends JsonplaceholderBaseUrl {
      */
 
     @Test
-    public void test01() {
+    public void get04() {
 
         //Set the Url
         spec.pathParam("first", "todos");

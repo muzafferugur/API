@@ -21,7 +21,7 @@ public class Get05 extends RestfulBaseUrl {
       */
 
     @Test
-    public void test01() {
+    public void get05() {
         //https://restful-booker.herokuapp.com/booking/?firstname=Jim&lastname=Jackson=>bunu postman de manuel olarak yaptık bu url i oluşturmaya çalışıyoruz buradan
         //?firstname=Jim&lastname=Jackson=>soru işaretinden sonraki kısımda sorgulama başlıyor->query
         //Set the Url

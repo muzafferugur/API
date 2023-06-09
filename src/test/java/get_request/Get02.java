@@ -24,7 +24,7 @@ public class Get02 {
  */
 
     @Test
-    public void get01() {
+    public void get02() {
         //i)  Set the URL,
         String url = "https://restful-booker.herokuapp.com/booking/1";
 

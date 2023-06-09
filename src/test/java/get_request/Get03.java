@@ -33,7 +33,7 @@ public class Get03 extends JsonplaceholderBaseUrl {
      */
 
     @Test
-    public void get01(){
+    public void get03(){
 
         // Set The URL
 

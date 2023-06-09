@@ -40,7 +40,7 @@ public class Get06 extends RestfulBaseUrl {
       */
 
     @Test
-    public void test01() {
+    public void get06() {
         //Set the url
         spec.pathParams("first", "booking", "second", 22);
 
