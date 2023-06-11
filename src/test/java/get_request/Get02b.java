@@ -20,19 +20,19 @@ public class Get02b extends ReqresBaseUrl {
         And
             Server is "cloudflare"
         And
-            Response body should be empty
+              Response body should be empty
 
      */
 
     @Test
     public void get02() {
         //Set the Url
-        spec.pathParams("first", "users", "second", 23);
+        spec.pathParams("first","api","second", "users", "third", 23);
 
 //Set The Expected Data
 
 //Send The Request and Get The Response
-        Response response = given().spec(spec).when().get("/{first}/{second}");
+        Response response = given().spec(spec).when().get("/{first}/{second}/{third}");
         response.prettyPrint();
 
 //Do Assertion

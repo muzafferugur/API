@@ -32,7 +32,7 @@ public class Get01 {
     /**
      * ==>https://restful-booker.herokuapp.com==>baseUrl
      * ==>/booking==>endPoint->bizi bir yere yönlrndiriyorsa endPoint
-     * ==> /101==>parametre
+     * ==> /101==>endPointte yer alan parametre
      * ==>https://restful-booker.herokuapp.com/booking/101==>tamamına URL veya URI denir endPoint değil
      */
 
