@@ -3,10 +3,10 @@ package get_request;
 import base_url.ReqresBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
 public class Get03b extends ReqresBaseUrl {
 
@@ -30,7 +30,7 @@ public class Get03b extends ReqresBaseUrl {
     */
 
     @Test
-    public void tes03(){
+    public void get03(){
         //Set the Url
         spec.pathParams("first","users","second",2);
 
@@ -43,13 +43,13 @@ public class Get03b extends ReqresBaseUrl {
 //Do Assertion
 
         response.
-                then().
+                then().assertThat().
                 statusCode(200).
                 contentType(ContentType.JSON).
-                body("data.email", Matchers.equalTo("janet.weaver@reqres.in"),
-                        "data.first_name", Matchers.equalTo("Janet"),
-                        "data.last_name", Matchers.equalTo("Weaver"),
-                        "support.text", Matchers.equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
+                body("data.email", equalTo("janet.weaver@reqres.in"),
+                        "data.first_name",equalTo("Janet"),
+                        "data.last_name", equalTo("Weaver"),
+                        "support.text", equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
 
 
     }
