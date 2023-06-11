@@ -37,6 +37,7 @@ public class Get01b {
 //        HTTP Status Code should be 200
 //        Content Type should be JSON
 //        Status Line should be HTTP/1.1 200 OK
+
         response.
                 then().
                 statusCode(200).
