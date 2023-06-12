@@ -41,29 +41,30 @@ public class Get08 extends JsonplaceholderBaseUrl {
     @Test
     public void get08() {
         //set the url
-        spec.pathParams("first","todos","second",2);
+        spec.pathParams("first", "todos", "second", 2);
 
         //set the expected data=>payload
-        Map<String,Object> expectedData=new HashMap<>();
-        expectedData.put("userId",1);
-        expectedData.put("id",2);
+        Map<String, Object> expectedData = new HashMap<>();
+        expectedData.put("userId", 1);
+        expectedData.put("id", 2);
         expectedData.put("title", "quis ut nam facilis et officia qui");
-        expectedData.put("completed",false);
+        expectedData.put("completed", false);
         System.out.println(expectedData);
 
 
         //send the request and get the response
-        Response response=given().spec(spec).when().get("/{first}/{second}");
+        Response response = given().spec(spec).when().get("/{first}/{second}");
         response.prettyPrint();
 
         //do assertions
-
-
-
-
-
-
-
+        Map<String, Object> actualData = response.as(HashMap.class);//De-Serialization
+        System.out.println("actualData = " + actualData);
+        assertEquals(expectedData.get("userId"), actualData.get("userId"));
+        assertEquals(expectedData.get("id"), actualData.get("id"));
+        assertEquals(expectedData.get("title"), actualData.get("title"));
+        assertEquals(expectedData.get("completed"), actualData.get("completed"));
+        assertEquals("1.1 vegur", response.header("Via"));
+        assertEquals("cloudflare", response.header("Server"));
 
 
     }
