@@ -1,9 +1,9 @@
 package get_request;
 
 import base_url.JsonplaceholderBaseUrl;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
+import test_data.JsonPlaceHolderTestData;
 
 import java.util.HashMap;
 import java.util.Map;

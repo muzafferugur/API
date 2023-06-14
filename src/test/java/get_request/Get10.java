@@ -3,11 +3,13 @@ package get_request;
 import base_url.GoRestBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
+import test_data.GoRestTestData;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class Get10 extends GoRestBaseUrl {
 
@@ -25,10 +27,10 @@ public class Get10 extends GoRestBaseUrl {
         "meta": null,
         "data": {
             "id": 2986,
-            "name": "Prof. Bala Pilla",
-            "email": "pilla_prof_bala@zemlak.io",=>burası inner class
-            "gender": "female",
-            "status": "active"
+            "name": "Navin Talwar",
+            "email": "navin_talwar@mclaughlin.name",=>burası inner class
+            "gender": "male",
+            "status": "inactive"
               }
          }
      */
@@ -40,25 +42,31 @@ public class Get10 extends GoRestBaseUrl {
         spec.pathParams("first", "users", "second", "2986");
 
         //set the expected data
+
+        GoRestTestData obj = new GoRestTestData();
         //önce inner classı Map'e atamakla başlayacağız
-        Map<String, Object> dataMap = new HashMap<>();
-        dataMap.put("id", 2986);
-        dataMap.put("name", "Prof. Bala Pilla");
-        dataMap.put("email", "pilla_prof_bala@zemlak.io");
-        dataMap.put("gender", "female");
-        dataMap.put("status", "active");
+        Map<String, String> dataKeyMap = obj.dataKeyMapMethod("Navin Talwar", "navin_talwar@mclaughlin.name", "male", "inactive");
+        //outer class for
+        Map<String, Object> expectedData = obj.expectedDataMethod(null, dataKeyMap);
+        System.out.println(expectedData);
 
-        //outer class
-
-        Map<String, Object> expectedDataMap = new HashMap<>();
-        expectedDataMap.put("meta", null);
-        expectedDataMap.put("data", dataMap);
 
         //Send the request and get the response
         Response response = given().spec(spec).when().get("/{first}/{second}");
         response.prettyPrint();
 
         //do assertions
+        Map<String,Object> actualData=response.as(HashMap.class);//=>karşıdan gelen datayı hashmap gibi yap hashmap'e çevir
+        System.out.println("actual data :"+actualData);
+        assertEquals(expectedData.get("meta"),actualData.get("meta"));
+        assertEquals(dataKeyMap.get("name"), ((Map) actualData.get("data")).get("name"));
+        assertEquals(dataKeyMap.get("email"), ((Map) actualData.get("data")).get("email"));
+        assertEquals(dataKeyMap.get("gender"), ((Map) actualData.get("data")).get("gender"));
+        assertEquals(dataKeyMap.get("status"), ((Map) actualData.get("data")).get("status"));
+        assertEquals(200, response.statusCode());
+
+
+
 
 
 

@@ -1,11 +1,11 @@
-package get_request;
+package test_data;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class GoRestData {
+public class GoRestTestData {
 
-    public Map<String, String> dataKeyMapMet(String name, String email, String gender, String status) {
+    public Map<String, String> dataKeyMapMethod(String name, String email, String gender, String status) {
         Map<String, String> dataKeyMap = new HashMap<>();
         dataKeyMap.put("name", name);
         dataKeyMap.put("email", email);
