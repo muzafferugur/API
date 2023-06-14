@@ -56,7 +56,7 @@ public class Get10 extends GoRestBaseUrl {
         response.prettyPrint();
 
         //do assertions
-        Map<String,Object> actualData=response.as(HashMap.class);//=>karşıdan gelen datayı hashmap gibi yap hashmap'e çevir
+        Map<String,Object> actualData=response.as(HashMap.class);//=>karşıdan gelen datayı hashmap gibi yap hashmap'e çevir(as methoduyla)
         System.out.println("actual data :"+actualData);
         assertEquals(expectedData.get("meta"),actualData.get("meta"));
         assertEquals(dataKeyMap.get("name"), ((Map) actualData.get("data")).get("name"));
