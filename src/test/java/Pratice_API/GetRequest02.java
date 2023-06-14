@@ -28,7 +28,7 @@ public class GetRequest02 {
             "last_name": "Bluth",
          */
 
-        // 3)Matcher Class ile (Soft Assert)
+        // 3)Matcher Class ile (Soft Assert=Verification)
         response.then()
                 .body("data[0].email",equalTo("george.bluth@reqres.in"),
                         "data[0].id",equalTo(1),
