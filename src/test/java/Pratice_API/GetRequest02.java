@@ -42,7 +42,6 @@ public class GetRequest02 {
                 .body("data[0].email",equalTo("george.bluth@reqres.in"))
                 .body("data[0].first_name",equalTo("George"))
                 .body("data[0].last_name",equalTo("Bluth"));
-
          */
     }
 }
