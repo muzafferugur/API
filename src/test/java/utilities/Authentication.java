@@ -33,12 +33,11 @@ public class Authentication {
         postBody.put("username", username);
         postBody.put("password", password);
         postBody.put("rememberMe", true);
-/*
+            /*
             "password": "Batch81+",
             "rememberMe": true,
             "username": "Batch81"
-
- */
+             */
 
         String endPoint = "https://www.gmibank.com/api/authenticate";
 
