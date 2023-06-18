@@ -33,6 +33,7 @@
             <version>7.7.0</version>
         </dependency>
         <dependency>
+            <!--Serialize için kullanılır. JSON-> Java & Java->JSON -->
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId><!--api library-->
             <version>2.10.1</version>
