@@ -1,21 +1,38 @@
 package Pratice_API;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
 public class GetRequest04 {
+    /*
+      http://dummy.restapiexample.com/api/v1/employees  url'ine
+      GET request'i yolladigimda gelen response'un
+      status kodunun 200 ve content type'inin "application/json"
+      ve employees sayisinin 24
+      ve employee'lerden birinin "Ashton Cox"
+      ve gelen yaslar icinde 21, 61, ve 23 degerlerinden birinin oldugunu test edin.
+    */
+
     @Test
-    public void test() {
+    public void test04(){
 
-        //token oluşturma ve authorized login
-        //bütün müşteri bilgilerine bu şekilde ulaşabiliyoruz
+        String url = "http://dummy.restapiexample.com/api/v1/employees";
 
-        String url ="https://www.gmibank.com/api/tp-customers";
-        String token="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYXRjaDgxIiwiYXV0aCI6IlJPTEVfQURNSU4iLCJleHAiOjE2ODkzNzEzNjF9.HMSRfnM7XDebs7_g77wO4RgZgw51MeHejMx64NWFr5SWDjwnQ73Qi8GHW-n-gV9ha3gECMXJEgmNGHAcELMWQA";
+        Response response = given().when().get(url);
+        //given().when().get(url) -> end point'e göndermek için request oluşturmuş olduk.
+        //Response response -> api tarafından bana dönen response (cevap)
 
-        Response response =given().headers("Authorization","Bearer "+token).when().get(url);
-        response.prettyPrint();
+        //status kodunun 200 ve content type'inin "application/json"
+        response.then().assertThat().contentType(ContentType.JSON).statusCode(200);
+
+        response.then().assertThat().body("data", hasSize(24)
+                , "data.employee_name", hasItem("Ashton Cox")
+                , "data.employee_age", hasItems(21, 61, 23));
     }
+
 }
+
