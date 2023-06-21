@@ -148,19 +148,24 @@ public class Get11 extends GoRestBaseUrl {
         //1.yol
         List<String> genders = response.jsonPath().getList("data.gender");
 
-        int kadinSayisi=0;
+        int numOfFemale=0;
         for (String w : genders) {
 
             if(w.equalsIgnoreCase("female")){
-                kadinSayisi++;
+                numOfFemale++;
             }
         }
 
-        assertTrue(kadinSayisi<=genders.size()-kadinSayisi);
+        assertTrue(numOfFemale<=genders.size()-numOfFemale);
 
         //2.yol kadın ve erkek sayılarını Groovy ile bulalım.
-        List<String> femaleNames =response.jsonPath().getList("data.findAll{it.gender=='female'}.name")
-        System.out.println(femaleNames);
+        List<String> femaleNames =response.jsonPath().getList("data.findAll{it.gender=='female'}.name");
+        System.out.println("femaleNames"+femaleNames);
+
+        List<String> maleNames =response.jsonPath().getList("data.findAll{it.gender=='male'}.name");
+        System.out.println("maleNames"+maleNames);
+
+        assertTrue(femaleNames.size()<=maleNames.size());
 
     }
 }
