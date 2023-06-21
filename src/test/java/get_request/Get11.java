@@ -4,8 +4,11 @@ import base_url.GoRestBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
 
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertTrue;
 
 public class Get11 extends GoRestBaseUrl {
 
@@ -123,22 +126,41 @@ public class Get11 extends GoRestBaseUrl {
     public void get11() {
 
         //Set the url
-        spec.pathParam("first","users");
+        spec.pathParam("first", "users");
 
         //set the expected data
 
         //send the request and get the response
-        Response response=given().spec(spec).when().get("/{first}");
+        Response response = given().spec(spec).when().get("/{first}");
         response.prettyPrint();
 
         //do assertions
         response.then().assertThat()
                 .statusCode(200)
-                .body("meta.pagination.limit",equalTo(10),
-                        "meta.pagination.links.current",equalTo("https://gorest.co.in/public/v1/users?page=1"),
-                        "data",hasSize(10),
-                        "data.status",hasItem("active"),
-                        "data.name",hasItems("Bhuvanesh Bhattacharya","Bhadran Asan","Surya Mehra"));
+                .body("meta.pagination.limit", equalTo(10),
+                        "meta.pagination.links.current", equalTo("https://gorest.co.in/public/v1/users?page=1"),
+                        "data", hasSize(10),
+                        "data.status", hasItem("active"),
+                        "data.name", hasItems("Bhuvanesh Bhattacharya", "Bhadran Asan", "Surya Mehra"));
+
+
+        //kadın ve erkek sayılarını karşılaştıralım
+        //1.yol
+        List<String> genders = response.jsonPath().getList("data.gender");
+
+        int kadinSayisi=0;
+        for (String w : genders) {
+
+            if(w.equalsIgnoreCase("female")){
+                kadinSayisi++;
+            }
+        }
+
+        assertTrue(kadinSayisi<=genders.size()-kadinSayisi);
+
+        //2.yol kadın ve erkek sayılarını Groovy ile bulalım.
+        List<String> femaleNames =response.jsonPath().getList("data.findAll{it.gender=='female'}.name")
+        System.out.println(femaleNames);
 
     }
 }
