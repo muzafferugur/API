@@ -6,9 +6,11 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import test_data.JsonPlaceHolderTestData;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class Patch01 extends JsonplaceholderBaseUrl {
     /*
@@ -47,6 +49,11 @@ public class Patch01 extends JsonplaceholderBaseUrl {
 
         //Do assertion
 
+        Map<String, Object> actualData = response.as(HashMap.class);
+        System.out.println("actualData = " + actualData);
+
+        assertEquals(200,response.statusCode());
+        assertEquals(expectedData.get("title"), actualData.get("title"));
 
 
     }
