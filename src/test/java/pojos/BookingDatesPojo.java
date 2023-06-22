@@ -31,4 +31,14 @@ public class BookingDatesPojo {
     public void setCheckout(String checkout) {
         this.checkout = checkout;
     }
+
+    //4-)toString() methodunu oluşturuyoruz.
+
+    @Override
+    public String toString() {
+        return "BookingDatesPojo{" +
+                "checkin='" + checkin + '\'' +
+                ", checkout='" + checkout + '\'' +
+                '}';
+    }
 }
