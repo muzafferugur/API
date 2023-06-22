@@ -30,7 +30,6 @@ public class JsonPlaceHolderTestData {
                 "                 \"completed\": "+completed+"\n" +
                 "               }";
 
-
         return expectedData;
     }
 }
