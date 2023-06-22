@@ -53,6 +53,5 @@ public class Put01 extends JsonplaceholderBaseUrl {
         assertEquals(expectedData.get("userId"),actualData.get("userId"));
         assertEquals(expectedData.get("title"),actualData.get("title"));
         assertEquals(expectedData.get("completed"),actualData.get("completed"));
-
     }
 }
