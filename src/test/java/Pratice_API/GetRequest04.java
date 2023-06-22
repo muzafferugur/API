@@ -32,6 +32,12 @@ public class GetRequest04 {
         response.then().assertThat().body("data", hasSize(24)
                 , "data.employee_name", hasItem("Ashton Cox")
                 , "data.employee_age", hasItems(21, 61, 23));
+
+        /**
+         * Matchers.hasSize(): Datanın size'ını doğrulamak için kullanılır.
+         *   Matchers.hasItem(): Girilen tek bir data'yı doğrulamak için kullanılır.
+         *   Matchers.hasItems(): Girilen birden fazla datayı doğrulamak için kullanılır.
+         */
     }
 
 }
