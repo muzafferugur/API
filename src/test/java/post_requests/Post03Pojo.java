@@ -37,6 +37,7 @@ public class Post03Pojo extends JsonplaceholderBaseUrl {
      * çevirirken Pojo class'ta aynı seviyedeki karşılığı olmayan Json veri
      * işleme alınmaz.
      * Bunu yapmazsak eğer "UnRecognizedProperty" Exception verir.
+     * Veriler farklı levelde ise bu annotation çalışmaz.
      */
 
     @Test
