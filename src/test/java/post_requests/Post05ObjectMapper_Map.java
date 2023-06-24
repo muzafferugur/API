@@ -8,9 +8,9 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class Post05ObjectMapper_Map extends JsonplaceholderBaseUrl {
    /*
@@ -36,7 +36,7 @@ public class Post05ObjectMapper_Map extends JsonplaceholderBaseUrl {
     @Test
     public void post05ObjectMapper() throws IOException {
         //set the url
-        spec.pathParam("first","todos");
+        spec.pathParam("first", "todos");
 
         //set the expected data
 
@@ -47,12 +47,21 @@ public class Post05ObjectMapper_Map extends JsonplaceholderBaseUrl {
                 "                 \"id\": 201\n" +
                 "                 }";
 
-        Map<String, Object> expectedData=new ObjectMapper().readValue(jsonInString, HashMap.class);
-        System.out.println("expectedData"+expectedData);
+        HashMap expectedData = new ObjectMapper().readValue(jsonInString, HashMap.class);
+        System.out.println("expectedData" + expectedData);
 
         //Send the request and get the response
-        Response response=given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}");
+        Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}");
         response.prettyPrint();
 
+        //Do Assertion
+        HashMap actualData = new ObjectMapper().readValue(response.asString(), HashMap.class);
+        System.out.println("actualData = " + actualData);
+
+        assertEquals(201, response.getStatusCode());
+        assertEquals(expectedData.get("completed"), actualData.get("completed"));
+        assertEquals(expectedData.get("title"), actualData.get("title"));
+        assertEquals(expectedData.get("userId"), actualData.get("userId"));
     }
+
 }
