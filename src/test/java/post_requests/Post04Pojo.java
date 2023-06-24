@@ -6,8 +6,10 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import pojos.BookingDatesPojo;
 import pojos.BookingPojo;
+import pojos.BookingResponseBodyPojo;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class Post04Pojo extends RestfulBaseUrl {
     /*
@@ -60,9 +62,17 @@ public class Post04Pojo extends RestfulBaseUrl {
         response.prettyPrint();
 
         //Do assertion
-        BookingPojo actualData = response.as(BookingPojo.class);
+        BookingResponseBodyPojo actualData = response.as(BookingResponseBodyPojo.class);
+        System.out.println("actualData = " + actualData);
 
+        assertEquals(200,response.getStatusCode());
+        assertEquals(expectedData.getFirstname(),actualData.getBooking().getFirstname());
+        assertEquals(expectedData.getLastname(),actualData.getBooking().getLastname());
+        assertEquals(expectedData.getTotalprice(),actualData.getBooking().getTotalprice());
+        assertEquals(expectedData.getDepositpaid(),actualData.getBooking().getDepositpaid());
+        assertEquals(expectedData.getAdditionalneeds(),actualData.getBooking().getAdditionalneeds());
 
-
+        assertEquals(bookingDatesPojo.getCheckin(),actualData.getBooking().getBookingdates().getCheckin());
+        assertEquals(bookingDatesPojo.getCheckout(),actualData.getBooking().getBookingdates().getCheckout());
     }
 }
