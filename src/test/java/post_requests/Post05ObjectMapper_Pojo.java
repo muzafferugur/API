@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
 import pojos.JsonPlaceHolderPojo;
+import utils.ObjectMapperUtils;
 
 import static io.restassured.RestAssured.given;
 
@@ -43,6 +44,8 @@ public class Post05ObjectMapper_Pojo extends JsonplaceholderBaseUrl {
         response.prettyPrint();
 
         //Do assertion
+        JsonPlaceHolderPojo actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), JsonPlaceHolderPojo.class);
+
 
 
     }
