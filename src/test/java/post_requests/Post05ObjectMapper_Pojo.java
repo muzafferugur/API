@@ -8,6 +8,7 @@ import pojos.JsonPlaceHolderPojo;
 import utils.ObjectMapperUtils;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class Post05ObjectMapper_Pojo extends JsonplaceholderBaseUrl {
 
@@ -38,6 +39,7 @@ public class Post05ObjectMapper_Pojo extends JsonplaceholderBaseUrl {
 
         //set the expected data
         JsonPlaceHolderPojo expectedData = new JsonPlaceHolderPojo(55, "Tidy your room", false);
+        System.out.println("expectedData" + expectedData);
 
         //send the request and get the response
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}");
@@ -45,7 +47,12 @@ public class Post05ObjectMapper_Pojo extends JsonplaceholderBaseUrl {
 
         //Do assertion
         JsonPlaceHolderPojo actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), JsonPlaceHolderPojo.class);
+        System.out.println("actualData" + actualData);
 
+        assertEquals(201,response.getStatusCode());
+        assertEquals(expectedData.getUserId(),actualData.getUserId());
+        assertEquals(expectedData.getTitle(),actualData.getTitle());
+        assertEquals(expectedData.getCompleted(),actualData.getCompleted());
 
 
     }
