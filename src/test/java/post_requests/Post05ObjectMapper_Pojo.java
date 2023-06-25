@@ -42,5 +42,8 @@ public class Post05ObjectMapper_Pojo extends JsonplaceholderBaseUrl {
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}");
         response.prettyPrint();
 
+        //Do assertion
+
+
     }
 }
