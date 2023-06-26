@@ -14,7 +14,7 @@ public class ObjectMapperUtils {
         mapper = new ObjectMapper();
     }
 
-    public static <T> T convertJsonToJava(String json, Class<T> cls){
+    public static <T> T convertJsonToJava(String json, Class<T> cls){//Generic method
 
         T javaResult = null;
 
