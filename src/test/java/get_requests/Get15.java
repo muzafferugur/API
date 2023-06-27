@@ -3,6 +3,7 @@ package get_requests;
 import base_url.RestfulBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
+import org.testng.asserts.SoftAssert;
 import pojos.BookingDatesPojo;
 import pojos.BookingPojo;
 import utils.ObjectMapperUtils;
@@ -47,6 +48,7 @@ public class Get15 extends RestfulBaseUrl {
         //do assertion
         BookingPojo actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), BookingPojo.class);
 
+        //hard assertion
         assertEquals(200, response.statusCode());
         assertEquals(expectedData.getFirstname(), actualData.getFirstname());
         assertEquals(expectedData.getLastname(), actualData.getLastname());
@@ -56,6 +58,21 @@ public class Get15 extends RestfulBaseUrl {
         assertEquals(expectedData.getBookingdates().getCheckout(), actualData.getBookingdates().getCheckout());
         assertEquals(expectedData.getAdditionalneeds(), actualData.getAdditionalneeds());
 
+        //soft assertion
+        //1.adım: SoftAssert objesi oluştur
+        SoftAssert softAssert = new SoftAssert();
+
+        //2.adım: Assertion yap(soft assertionda önce actualdata sonra expecteddata)
+        softAssert.assertEquals(actualData.getFirstname(),expectedData.getFirstname(),"First name uyusmadi");
+        softAssert.assertEquals(actualData.getLastname(),expectedData.getLastname(),"Last name uyusmadi");
+        softAssert.assertEquals(actualData.getTotalprice(),expectedData.getTotalprice(),"Total price uyusmadi");
+        softAssert.assertEquals(actualData.getDepositpaid(),expectedData.getDepositpaid(),"Deposit paid uyusmadi");
+        softAssert.assertEquals(actualData.getBookingdates().getCheckin(),expectedData.getBookingdates().getCheckin(),"Checkin date uyusmadi");
+        softAssert.assertEquals(actualData.getBookingdates().getCheckout(),expectedData.getBookingdates().getCheckout(),"Checkout date uyusmadi");
+        softAssert.assertEquals(actualData.getAdditionalneeds(),expectedData.getAdditionalneeds(),"Additional needs uyusmadi");
+
+        //3.adım:assertAll() methodunu kullan
+        softAssert.assertAll();
 
     }
 }
