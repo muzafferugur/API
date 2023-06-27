@@ -43,7 +43,7 @@ public class Put01 extends JsonplaceholderBaseUrl {
         JsonPlaceHolderTestData obj = new JsonPlaceHolderTestData();
         Map<String, Object> expectedData = obj.expectedDataMethod(21, "Wash the dishes", false);
 
-        //Send The Request And Get The Response
+        //Send The put Request And Get The Response
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).put("/{first}/{second}");
         response.prettyPrint();
 

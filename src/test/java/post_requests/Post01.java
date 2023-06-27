@@ -46,7 +46,7 @@ public class Post01 extends JsonplaceholderBaseUrl {
         JsonPlaceHolderTestData obj = new JsonPlaceHolderTestData();
         Map<String, Object> expectedData = obj.expectedDataMethod(55, "Tidy your room", false);
 
-        //Send the request and get the response
+        //Send the post request and get the response
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{1}");
         response.prettyPrint();
 

@@ -43,7 +43,7 @@ public class Patch01 extends JsonplaceholderBaseUrl {
 
         System.out.println("expectedData = " + expectedData);
 
-        //Send the Request and Get the Response
+        //Send the patch Request and Get the Response
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().patch("/{first}/{second}");
         response.prettyPrint();
 

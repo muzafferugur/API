@@ -58,7 +58,7 @@ public class Post02 extends RestfulBaseUrl {
         Map<String, String> bookingdatesMap = obj.bookingdatesMethod("2021-09-09", "2021-09-21");//inner map
         Map<String, Object> expectedData = obj.expectedDataMethod("John", "Doe", 11111, true, bookingdatesMap);//outer map
 
-        //send the request and get the response
+        //send the post request and get the response
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}");
         response.prettyPrint();
 

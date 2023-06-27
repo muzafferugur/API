@@ -2,6 +2,8 @@ package post_requests;
 
 import base_url.DummyRestApiBaseUrl;
 import org.junit.Test;
+import pojos.DummyRestApiDataPojo;
+import pojos.DummyRestApiResponseBodyPojo;
 
 public class Post06 extends DummyRestApiBaseUrl {
 
@@ -72,9 +74,14 @@ public class Post06 extends DummyRestApiBaseUrl {
     @Test
     public void post06() {
         //set the url
-        spec.pathParam("first","create");
+        spec.pathParam("first", "create");
 
         //set the expected data
+        DummyRestApiDataPojo innerPojo = new DummyRestApiDataPojo("Tom Hanks", 111111, 23, "Perfect image");
+        DummyRestApiResponseBodyPojo expectedData = new DummyRestApiResponseBodyPojo("success", innerPojo, "Successfully! Record has been added.");
+        System.out.println("expectedData = " + expectedData);
+
+        //send the post request and get the response
 
     }
 }

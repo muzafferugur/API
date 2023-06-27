@@ -49,7 +49,7 @@ public class Post03Pojo extends JsonplaceholderBaseUrl {
         JsonPlaceHolderPojo expectedData = new JsonPlaceHolderPojo(55, "Tidy your room", false);
         System.out.println("expectedData" + expectedData);
 
-        //send the request and get the response
+        //send the post request and get the response
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}");
         response.prettyPrint();
 
