@@ -1,9 +1,13 @@
 package post_requests;
 
 import base_url.DummyRestApiBaseUrl;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.junit.Test;
 import pojos.DummyRestApiDataPojo;
 import pojos.DummyRestApiResponseBodyPojo;
+
+import static io.restassured.RestAssured.given;
 
 public class Post06 extends DummyRestApiBaseUrl {
 
@@ -77,11 +81,16 @@ public class Post06 extends DummyRestApiBaseUrl {
         spec.pathParam("first", "create");
 
         //set the expected data
-        DummyRestApiDataPojo innerPojo = new DummyRestApiDataPojo("Tom Hanks", 111111, 23, "Perfect image");
-        DummyRestApiResponseBodyPojo expectedData = new DummyRestApiResponseBodyPojo("success", innerPojo, "Successfully! Record has been added.");
+        DummyRestApiDataPojo expectedData = new DummyRestApiDataPojo("Tom Hanks", 111111, 23, "Perfect image");
         System.out.println("expectedData = " + expectedData);
 
         //send the post request and get the response
+        Response response=given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}");
+        response.prettyPrint();
+
+        //do assertion
+
+
 
     }
 }

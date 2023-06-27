@@ -26,17 +26,17 @@ public class Delete01 extends JsonplaceholderBaseUrl {
     @Test
     public void delete01() {
 
-        // Set the Url
+        // set the url
         spec.pathParams("first", "todos", "second", 198);
 
         // Set the expected data
         Map<String, String> expectedData = new HashMap<>();
 
-        // Send the Request and Get the Response
+        // send the delete request and get the response
         Response response = given().spec(spec).when().delete("/{first}/{second}");
         response.prettyPrint();
 
-        // Do Assertion
+        // do assertion
         Map actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), HashMap.class);
 
         assertEquals(200, response.getStatusCode());
