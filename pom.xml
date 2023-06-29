@@ -9,18 +9,14 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>20</maven.compiler.source>
-        <maven.compiler.target>20</maven.compiler.target>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <argLine>-Duser.language=en</argLine><!--Projenin dilinin her durumda ingilizce algılanmasını sağlıyor -->
 
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.10.1</version>
-        </dependency>
+
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId> <!--api library-->
@@ -37,13 +33,21 @@
             <version>7.7.0</version>
         </dependency>
         <dependency>
+            <!--Serialize için kullanılır. JSON-> Java & Java->JSON -->
             <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
+            <artifactId>gson</artifactId><!--api library-->
             <version>2.10.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
+            <artifactId>jackson-mapper-asl</artifactId><!--api library-->
             <version>1.9.13</version>
         </dependency>
         <dependency>
