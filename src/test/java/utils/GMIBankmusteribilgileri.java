@@ -1,6 +1,6 @@
 package utils;
 
-public class musteribilgileri {
+public class GMIBankmusteribilgileri {
     /*
     [
     {
