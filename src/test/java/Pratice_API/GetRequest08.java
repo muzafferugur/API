@@ -61,7 +61,6 @@ public class GetRequest08 extends GMIBankBaseUrl {
 
 
         //2) JSON PATH
-
         //3) De-Serialization
 
 
