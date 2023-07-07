@@ -1,6 +1,7 @@
 package Pratice_API;
 
 import base_url.GMIBankBaseUrl;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
 
@@ -9,6 +10,7 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
 
 public class GetRequest08 extends GMIBankBaseUrl {
     /*
@@ -61,8 +63,27 @@ public class GetRequest08 extends GMIBankBaseUrl {
 
 
         //2) JSON PATH
+        JsonPath json=response.jsonPath();
+
+        assertEquals("Alda",json.getString("firstName"));
+        assertEquals("Monahan",json.getString("lastName"));
+        assertEquals("Nichelle Hermann Kohler",json.getString("middleInitial"));
+        assertEquals("com.github.javafaker.Name@7c011174@gmail.com",json.getString("email"));
+        assertEquals("909-162-8114",json.getString("mobilePhoneNumber"));
+        assertEquals("St Louis",json.getString("city"));
+        assertEquals("108-53-6655",json.getString("ssn"));
+
+
         //3) De-Serialization
+        Map<String, Object> actualData = response.as(HashMap.class);
+        System.out.println(actualData);
 
-
+        assertEquals(expectedData.get("firstName"), actualData.get("firstName"));
+        assertEquals(expectedData.get("lastName"), actualData.get("lastName"));
+        assertEquals(expectedData.get("middleInitial"), actualData.get("middleInitial"));
+        assertEquals(expectedData.get("email"), actualData.get("email"));
+        assertEquals(expectedData.get("mobilePhoneNumber"), actualData.get("mobilePhoneNumber"));
+        assertEquals(expectedData.get("city"), actualData.get("city"));
+        assertEquals(expectedData.get("ssn"), actualData.get("ssn"));
     }
 }
