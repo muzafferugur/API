@@ -2,6 +2,9 @@ package Pratice_API;
 
 import base_url.GMIBankBaseUrl;
 import org.junit.Test;
+import pojos.GMIBankCountryPojo;
+import pojos.GMIBankCustomerPojo;
+import pojos.GMIBankUserPojo;
 
 public class GetRequest09 extends GMIBankBaseUrl {
     /*
@@ -48,6 +51,17 @@ public class GetRequest09 extends GMIBankBaseUrl {
     "accounts": []
 }
          */
+
+        GMIBankUserPojo GMIBankUserPojo = new GMIBankUserPojo(110016, "leopoldo.reinger", "Jasmine", "Stehr",
+                "marni.zboncak@yahoo.com", true, "en", null, null);
+
+        GMIBankCountryPojo GMIBankCountryPojo = new GMIBankCountryPojo(3, "USA", null);
+
+        GMIBankCustomerPojo expectedData = new GMIBankCustomerPojo(110452, "Jasmine", "Stehr", "V", "marni.zboncak@yahoo.com"
+                , "463-609-2097", "1-112-497-0270", "16525", "14387 Al Ridge5343 Bert Burgs", "Waltermouth"
+                , "761-59-2911", "2021-11-28T21:00:00Z", false, GMIBankCountryPojo, "California", GMIBankUserPojo);
+
+        System.out.println("expectedData = " + expectedData);
 
 
 
