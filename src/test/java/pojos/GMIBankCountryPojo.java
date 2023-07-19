@@ -43,7 +43,7 @@ public class GMIBankCountryPojo {
 
     @Override
     public String toString() {
-        return "Country{" +
+        return "GMIBankCountryPojo{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", states='" + states + '\'' +

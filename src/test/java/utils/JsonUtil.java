@@ -15,7 +15,7 @@ public class JsonUtil {
         try {
             javaResult = mapper.readValue(json, cls);
         } catch (IOException e) {
-            System.err.println("JSON datası Java'ya dönüştürülemedi");
+            System.err.println("JSON datası Java' ya dönüştürülemedi");
         }
         return javaResult;
     }

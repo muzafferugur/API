@@ -117,7 +117,7 @@ public class GMIBankUserPojo {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "GMIBankUserPojo{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", firstName='" + firstName + '\'' +

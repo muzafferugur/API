@@ -103,7 +103,7 @@ public class GMIBankAccountPojo {
 
     @Override
     public String toString() {
-        return "Account{" +
+        return "GMIBankAccountPojo{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
                 ", balance=" + balance +
@@ -115,5 +115,4 @@ public class GMIBankAccountPojo {
                 ", accountlogs='" + accountlogs + '\'' +
                 '}';
     }
-
 }

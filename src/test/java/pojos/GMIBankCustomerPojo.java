@@ -208,7 +208,7 @@ public class GMIBankCustomerPojo {
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "GMIBankCustomerPojo{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -222,9 +222,9 @@ public class GMIBankCustomerPojo {
                 ", ssn='" + ssn + '\'' +
                 ", createDate='" + createDate + '\'' +
                 ", zelleEnrolled=" + zelleEnrolled +
-                ", country=" + GMIBankCountryPojo +
+                ", GMIBankCountryPojo=" + GMIBankCountryPojo +
                 ", state='" + state + '\'' +
-                ", user=" + GMIBankUserPojo +
+                ", GMIBankUserPojo=" + GMIBankUserPojo +
                 '}';
     }
 }
