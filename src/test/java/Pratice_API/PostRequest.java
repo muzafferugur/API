@@ -20,8 +20,8 @@ public class PostRequest extends GMIBankBaseUrl {
         GMIBankCountryPostPojo GMIBankCountryPostPojo = new GMIBankCountryPostPojo("Batch81");
         System.out.println("countryPost = " + GMIBankCountryPostPojo);
 
-        Response response = given()
-                .headers("Authorization", "Bearer " + generateToken(), "Content-Type", ContentType.JSON)
+        Response response = given().contentType(ContentType.JSON)
+                .headers("Authorization", "Bearer " + generateToken())
                 .spec(spec01).when().body(GMIBankCountryPostPojo)
                 .post("/{first}");
 
