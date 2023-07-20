@@ -67,5 +67,6 @@ public class GMIBank01 extends GMIBankBaseUrl {
 
         String fileName1 = "src/test/java/Pratice_API/AllData.txt";
         WriteToText.saveCustomersData(fileName1, customers);
+
     }
 }
