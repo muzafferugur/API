@@ -52,6 +52,5 @@ public class Get16 extends DummyRestApiBaseUrl {
         response.then().assertThat().body("data.id",hasSize(24));
 
 
-
     }
 }
