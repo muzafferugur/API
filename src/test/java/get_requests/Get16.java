@@ -54,7 +54,7 @@ public class Get16 extends DummyRestApiBaseUrl {
         response.prettyPrint();
 
         // There are 24 employees,"Tiger Nixon" and "Garrett Winters" are among the employees
-        response.then().assertThat().body("data.id", hasSize(24),
+        response.then().assertThat().statusCode(200).body("data.id", hasSize(24),
                 "data.employee_name", hasItems("Tiger Nixon", "Garrett Winters"));
 
         // The greatest age is 66
@@ -86,7 +86,18 @@ public class Get16 extends DummyRestApiBaseUrl {
         assertEquals(6644770, sum);
 
         //2.yol:
-        salaries.stream().reduce(0, (t, u) -> t + u);
+        int sum2 = salaries.stream().reduce(0, Integer::sum);
+        System.out.println("sum2 = " + sum2);
+        assertEquals(6644770, sum2);
+
+        //3.yol:
+        int sum3 = salaries.stream().reduce(0, Math::addExact);
+        System.out.println("sum3 = " + sum3);
+        assertEquals(6644770, sum3);
+
+
+
+
 
 
     }
