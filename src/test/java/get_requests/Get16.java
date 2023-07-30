@@ -4,8 +4,13 @@ import base_url.DummyRestApiBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
 
+import java.util.Collections;
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertEquals;
 
 public class Get16 extends DummyRestApiBaseUrl {
      /*
@@ -40,17 +45,30 @@ public class Get16 extends DummyRestApiBaseUrl {
 
     @Test
     public void get16() {
-      //set the url
-      spec.pathParam("first","employees");
+        //set the url
+        spec.pathParam("first", "employees");
 
-      //set the expected data
+        //set the expected data
 
-     Response response=given().spec(spec).when().get("/{first}");
-     response.prettyPrint();
+        Response response = given().spec(spec).when().get("/{first}");
+        response.prettyPrint();
 
-     //hamcrest matchers
-        response.then().assertThat().body("data.id",hasSize(24));
+        //There are 24 employees,"Tiger Nixon" and "Garrett Winters" are among the employees
+        response.then().assertThat().body("data.id", hasSize(24),
+                "data.employee_name", hasItems("Tiger Nixon", "Garrett Winters"));
 
+        // The greatest age is 66
+        List<Integer> ages = response.jsonPath().getList("data.employee_age");//mutable
+        System.out.println(ages);
+        Collections.sort(ages);
+        System.out.println("Sorted Ages:" + ages);
+        System.out.println(ages.get(ages.size() - 1));//son indexin elemanı
+        assertEquals(66, (int) (ages.get(ages.size() - 1)));
+
+        // The name of the lowest age is "Tatyana Fitzpatrick"
+
+        String lowestAgedEmployee = response.jsonPath().getString("data.findAll{it.employee_age == " + ages.get(0) + "}.employee_name");
+        System.out.println("lowestAgedEmployee ="+lowestAgedEmployee);
 
     }
 }
