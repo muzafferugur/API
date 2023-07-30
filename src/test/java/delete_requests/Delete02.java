@@ -7,6 +7,7 @@ import pojos.DummyRestApiDeletePojo;
 import utils.ObjectMapperUtils;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class Delete02 extends DummyRestApiBaseUrl {
 
@@ -44,6 +45,10 @@ public class Delete02 extends DummyRestApiBaseUrl {
 
         DummyRestApiDeletePojo actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), DummyRestApiDeletePojo.class);
         System.out.println("actualData = " + actualData);
+
+        assertEquals(expectedData.getData(),actualData.getData());
+        assertEquals(expectedData.getStatus(),actualData.getStatus());
+        assertEquals(expectedData.getMessage(),actualData.getMessage());
 
 
 
