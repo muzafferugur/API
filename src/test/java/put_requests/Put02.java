@@ -6,8 +6,10 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import pojos.DummyRestApiDataPojo;
 import pojos.DummyRestApiResponseBodyPojo;
+import utils.ObjectMapperUtils;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class Put02 extends DummyRestApiBaseUrl {
     /*
@@ -76,6 +78,21 @@ public class Put02 extends DummyRestApiBaseUrl {
 
         Response response = given().spec(spec).contentType(ContentType.JSON).body(dummyRestApiDataPojo).put("/{first}/{second}");
         response.prettyPrint();
+
+        DummyRestApiResponseBodyPojo actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), DummyRestApiResponseBodyPojo.class);
+
+        // Status code is 200
+        assertEquals(200, response.statusCode());
+
+        assertEquals(expectedData.getStatus(), actualData.getStatus());
+        assertEquals(expectedData.getMessage(), actualData.getMessage());
+
+        assertEquals(dummyRestApiDataPojo.getEmployee_name(), actualData.getData().getEmployee_name());
+        assertEquals(dummyRestApiDataPojo.getEmployee_age(), actualData.getData().getEmployee_age());
+        assertEquals(dummyRestApiDataPojo.getEmployee_salary(), actualData.getData().getEmployee_salary());
+        assertEquals(dummyRestApiDataPojo.getProfile_image(), actualData.getData().getProfile_image());
+
+
 
 
     }
