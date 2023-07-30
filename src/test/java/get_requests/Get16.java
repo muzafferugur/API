@@ -45,15 +45,15 @@ public class Get16 extends DummyRestApiBaseUrl {
 
     @Test
     public void get16() {
-        //set the url
+        // set the url
         spec.pathParam("first", "employees");
 
-        //set the expected data
+        // set the expected data
 
         Response response = given().spec(spec).when().get("/{first}");
         response.prettyPrint();
 
-        //There are 24 employees,"Tiger Nixon" and "Garrett Winters" are among the employees
+        // There are 24 employees,"Tiger Nixon" and "Garrett Winters" are among the employees
         response.then().assertThat().body("data.id", hasSize(24),
                 "data.employee_name", hasItems("Tiger Nixon", "Garrett Winters"));
 
@@ -68,7 +68,26 @@ public class Get16 extends DummyRestApiBaseUrl {
         // The name of the lowest age is "Tatyana Fitzpatrick"
 
         String lowestAgedEmployee = response.jsonPath().getString("data.findAll{it.employee_age == " + ages.get(0) + "}.employee_name");
-        System.out.println("lowestAgedEmployee ="+lowestAgedEmployee);
+        System.out.println("lowestAgedEmployee =" + lowestAgedEmployee);
+
+        assertEquals("[Tatyana Fitzpatrick]", lowestAgedEmployee);
+
+        // Total salary of all employees is 6,644,770
+
+        List<Integer> salaries = response.jsonPath().getList("data.employee_salary");
+        System.out.println("salaries = " + salaries);
+
+        //1.yol:
+        int sum = 0;
+        for (int w : salaries) {
+            sum += w;
+        }
+        System.out.println("sum = " + sum);
+        assertEquals(6644770, sum);
+
+        //2.yol:
+        salaries.stream().reduce(0, (t, u) -> t + u);
+
 
     }
 }
