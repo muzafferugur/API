@@ -80,8 +80,8 @@ public class Put02 extends DummyRestApiBaseUrl {
         response.prettyPrint();
 
         DummyRestApiResponseBodyPojo actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), DummyRestApiResponseBodyPojo.class);
+        System.out.println("actualData = " + actualData);
 
-        // Status code is 200
         assertEquals(200, response.statusCode());
 
         assertEquals(expectedData.getStatus(), actualData.getStatus());
